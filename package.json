@@ -1,0 +1,23 @@
+{
+  "name": "when-master",
+  "version": "0.2.0",
+  "description": "Test if a process is the master in a cluster.",
+  "author": "Dylan Piercey <pierceydylan@gmail.com>",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/when-master"
+  },
+  "keywords": [
+    "when-master",
+    "master",
+    "cluster",
+    "fork",
+    "process"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "uniq": "^1.0.1"
+  }
+}
