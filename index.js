@@ -4,6 +4,7 @@ var cluster = require("cluster");
 var exec    = require("child_process").execSync;
 var uniq    = require("uniq");
 var storage = path.join(__dirname, "__master");
+var exited  = false;
 
 if (!fs.existsSync(storage)) save([process.pid]);
 else {
@@ -39,10 +40,11 @@ module.exports = function whenMaster (fn) {
 };
 
 function exit () {
+	if (exited) return;
+	exited = true;
 	var processes = getAll();
 	processes.splice(processes.indexOf(process.pid), 1);
 	save(processes);
-	process.exit(0);
 }
 
 function save (processes) {
@@ -50,5 +52,5 @@ function save (processes) {
 }
 
 function getAll () {
-	return JSON.parse(fs.readFileSync(storage, "utf8"));
+	return JSON.parse(fs.readFileSync(storage, "utf8") || "[]");
 }
