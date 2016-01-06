@@ -12,3 +12,16 @@ It works by creating a temporary file that stores the pid of the first process t
 ```console
 npm install when-master
 ```
+
+# Usage
+```js
+var whenMaster = require("when-master");
+
+// Boolean check.
+var isMaster = whenMaster(); //-> True;
+
+// Or execute a function.
+whenMaster(function () {
+	// Process is the master.
+});
+```

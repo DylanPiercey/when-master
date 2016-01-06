@@ -40,11 +40,13 @@ module.exports = function whenMaster (fn) {
 };
 
 function exit () {
-	if (exited) return;
-	exited = true;
-	var processes = getAll();
-	processes.splice(processes.indexOf(process.pid), 1);
-	save(processes);
+	if (!exited) {
+		exited = true;
+		var processes = getAll();
+		processes.splice(processes.indexOf(process.pid), 1);
+		save(processes);
+	};
+	process.exit();
 }
 
 function save (processes) {
