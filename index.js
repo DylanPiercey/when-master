@@ -9,7 +9,7 @@ var exited  = false;
 if (!fs.existsSync(storage)) save([process.pid]);
 else {
 	// Make sure existing processes are still online.
-	var ids = exec("ps ax | awk '{print $1}'")
+	var ids = (exec("ps ax | awk '{print $1}'") || "")
 		.toString()
 		.split("\n")
 		.map(Number)
