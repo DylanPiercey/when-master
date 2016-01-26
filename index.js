@@ -54,5 +54,9 @@ function save (processes) {
 }
 
 function getAll () {
-	return JSON.parse(fs.readFileSync(storage, "utf8") || "[]");
+	try {
+		return JSON.parse(fs.readFileSync(storage, "utf8")) || [];
+	} catch (_) {
+		return [];
+	}
 }
