@@ -17,11 +17,16 @@ npm install when-master
 ```js
 var whenMaster = require("when-master");
 
-// Boolean check.
-var isMaster = whenMaster(); //-> True;
+// In process A
+whenMaster("appA"); //-> true
 
-// Or execute a function.
-whenMaster(function () {
-	// Process is the master.
-});
+// In process B
+whenMaster("appA"); //-> false
+whenMaster("appB"); //-> true
+
+// Later in process A
+whenMaster("appB"); //-> false
+
+// In process B after process A exits
+whenMaster("appA"); //-> true
 ```
