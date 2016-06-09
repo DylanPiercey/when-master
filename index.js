@@ -17,6 +17,8 @@ process
 	.on("SIGINT", exit);
 
 module.exports = function whenMaster (source) {
+	source = source || "__default__";
+
 	if (!started) {
 		started = true;
 		init(source);
